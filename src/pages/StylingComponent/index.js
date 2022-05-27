@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native'
-import laptop from '../assets/images/laptop.jpg'
+import laptop from '../../assets/images/laptop.jpg'
 
-const StylingReactNativeComponent = () => {
+const StylingComponent = () => {
   return (
     <View>
       <Text style={styles.text} >Styling Componentt</Text>
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default StylingReactNativeComponent
+export default StylingComponent

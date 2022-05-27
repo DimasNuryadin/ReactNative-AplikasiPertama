@@ -1,29 +1,20 @@
-// Functionol Component
-
 import React from 'react'
-import { View, Text, Image, TextInput } from 'react-native'
+import { View, ScrollView } from 'react-native'
+import MateriFlexBox from './Component/MateriFlexBox'
+import PositionReactNative from './Component/PositionReactNative'
+import SampleComponent from './Component/SampleComponent'
+import StylingReactNativeComponent from './Component/StylingReactNativeComponent'
 
+// Functionol Component
 export default function App() {
   return (
     <View>
-
-      <View style={{width: 80, height: 80, backgroundColor: '#f0932b'}}/>
-
-      <Text>Hello</Text>
-
-      <Dimas/>
-
-      <Photo/>
-
-      <TextInput style={{borderWidth: 1}} />
+      <ScrollView>
+        {/* <SampleComponent />
+        <StylingReactNativeComponent />
+        <MateriFlexBox /> */}
+        <PositionReactNative />
+      </ScrollView>
     </View>
   )
-}
-
-const Dimas = () => {
-  return <Text>Dimas Nuryadin</Text>
-}
-
-const Photo = () => {
-  return <Image source={{uri: 'https://placeimg.com/100/100/tech'}} style={{width:100, height:100}} />
 }

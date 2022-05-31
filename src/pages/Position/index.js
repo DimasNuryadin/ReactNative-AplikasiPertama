@@ -19,7 +19,8 @@ export default function Position() {
 
 const styles = StyleSheet.create({
   heading: {
-    fontWeight: '700', fontSize: 20
+    fontWeight: '700',
+    fontSize: 20
   },
   wrapper: {
     padding: 20,
@@ -36,7 +37,10 @@ const styles = StyleSheet.create({
     position: 'relative',
     marginTop: 40
   },
-  iconCart: { width: 50, height: 50 },
+  iconCart: {
+    width: 50,
+    height: 50
+  },
   text: {
     fontSize: 12,
     color: '#777777',

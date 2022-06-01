@@ -6,6 +6,8 @@ import FlexBox from './pages/FlexBox'
 import Position from './pages/Position'
 import PropsDinamis from './pages/PropsDinamis'
 import StateDinamis from './pages/StateDinamis'
+import Communication from './pages/Communication'
+import ReactNativeSVG from './pages/ReactNativeSVG'
 
 // Error
 // 1 Devtool belum install, tambah dependesi "react-devtools-core": "^4.14.0",
@@ -26,8 +28,8 @@ export default function App() {
   return (
     <View>
       <ScrollView>
-        {/* <SampleComponent />
-        <StylingComponent /> */}
+        {/* <SampleComponent /> */}
+        {/* <StylingComponent /> */}
 
         {/* jika isShow nya true maka munculkan flexbox */}
         {/* { isShow && <FlexBox />}  */}
@@ -38,7 +40,11 @@ export default function App() {
 
         {/* <PropsDinamis /> */}
 
-        <StateDinamis />
+        {/* <StateDinamis /> */}
+
+        {/* <Communication /> */}
+
+        <ReactNativeSVG />
       </ScrollView>
     </View>
   )

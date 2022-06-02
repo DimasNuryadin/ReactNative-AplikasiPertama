@@ -1,13 +1,14 @@
-import React, {useState, useEffect} from 'react'
-import { View, ScrollView } from 'react-native'
-import SampleComponent from './pages/SampleComponent'
-import StylingComponent from './pages/StylingComponent'
-import FlexBox from './pages/FlexBox'
-import Position from './pages/Position'
-import PropsDinamis from './pages/PropsDinamis'
-import StateDinamis from './pages/StateDinamis'
-import Communication from './pages/Communication'
-import ReactNativeSVG from './pages/ReactNativeSVG'
+import React, { useState, useEffect } from 'react';
+import { View, ScrollView } from 'react-native';
+import SampleComponent from './pages/SampleComponent';
+import StylingComponent from './pages/StylingComponent';
+import FlexBox from './pages/FlexBox';
+import Position from './pages/Position';
+import PropsDinamis from './pages/PropsDinamis';
+import StateDinamis from './pages/StateDinamis';
+import Communication from './pages/Communication';
+import ReactNativeSVG from './pages/ReactNativeSVG';
+import BasicJavascript from './pages/BasicJavascript';
 
 // Error
 // 1 Devtool belum install, tambah dependesi "react-devtools-core": "^4.14.0",
@@ -21,10 +22,10 @@ export default function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      setIsShow(false)
-    }, 6000)
-  }, [])
-  
+      setIsShow(false);
+    }, 6000);
+  }, []);
+
   return (
     <View>
       <ScrollView>
@@ -44,8 +45,10 @@ export default function App() {
 
         {/* <Communication /> */}
 
-        <ReactNativeSVG />
+        <BasicJavascript />
+
+        {/* <ReactNativeSVG /> */}
       </ScrollView>
     </View>
-  )
+  );
 }

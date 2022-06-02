@@ -5,7 +5,7 @@ import IllustrationMyApp from '../../assets/images/undraw_react_re_g3ui.svg'
 export default function ReactNativeSVG() {
   return (
     <View style={styles.container}>
-      <Text style={styles.textTitle}>Materi Menggunakan File SVG didalam React Native</Text>
+      <Text style={styles.textTitle}>Materi Menggunakan File SVG didalam React Nativee</Text>
       <IllustrationMyApp width={244} height={125} />
     </View>
   )

@@ -10,6 +10,7 @@ import Communication from './pages/Communication';
 import ReactNativeSVG from './pages/ReactNativeSVG';
 import BasicJavascript from './pages/BasicJavascript';
 import CallApiVanilla from './pages/CallApiVanilla';
+import CallApiAxios from './pages/CallApiAxios';
 
 // Error
 // 1 Devtool belum install, tambah dependesi "react-devtools-core": "^4.14.0",
@@ -50,7 +51,9 @@ export default function App() {
 
         {/* <ReactNativeSVG /> */}
 
-        <CallApiVanilla />
+        {/* <CallApiVanilla /> */}
+
+        <CallApiAxios />
       </ScrollView>
     </View>
   );

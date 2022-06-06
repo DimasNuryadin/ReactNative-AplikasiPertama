@@ -1,38 +1,154 @@
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
-import React from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import * as Axios from 'axios';
 
-const Item = () => {
+const Item = ({ name, email, bidang, onPress, onDelete }) => {
   return (
     <View style={styles.itemContainer}>
-      <Image
-        source={{
-          uri: 'https://lh3.googleusercontent.com/ogw/ADea4I6p5EJev2vO5g5BXXuYn5ISYNJO0bBsd--SwEbazg=s32-c-mo',
-        }}
-        style={styles.avatars}
-      />
+      {/* Touchabel supaya component bisa di klik */}
+      <TouchableOpacity onPress={onPress}>
+        <Image
+          source={{
+            uri: `https://avatars.dicebear.com/api/adventurer-neutral/${email}.png`,
+          }}
+          style={styles.avatars}
+        />
+      </TouchableOpacity>
       <View style={styles.desc}>
-        <Text style={styles.descName}>Nama Lengkap</Text>
-        <Text style={styles.descEmail}>Email</Text>
-        <Text style={styles.descBidang}>Bidang</Text>
+        <Text style={styles.descName}>{name}</Text>
+        <Text style={styles.descEmail}>{email}</Text>
+        <Text style={styles.descBidang}>{bidang}</Text>
       </View>
-      <Text style={styles.delete}>X</Text>
+      <TouchableOpacity onPress={onDelete}>
+        <Text style={styles.delete}>X</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 export default function LocalAPI() {
+  // Tampung data form
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [bidang, setBidang] = useState('');
+  const [users, setUsers] = useState([]);
+  const [button, setButton] = useState('Simpan');
+  const [selectedUser, setSelectedUser] = useState({});
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // Post Data
+  const submit = () => {
+    // Data yang akan dikirim
+    const data = {
+      name,
+      email,
+      bidang,
+    };
+    if (button === 'Simpan') {
+      console.log('Data before send: ', data);
+      // ip dari emulator (10.0.2.2)
+      // ip sesuai jaringan 192.168.2.86
+      Axios.post('http://192.168.2.86:3004/users/ ', data).then(res => {
+        console.log('res : ', res);
+        setName('');
+        setEmail('');
+        setBidang('');
+        getData();
+      });
+    } else if (button === 'Update') {
+      Axios.put(`http://192.168.2.86:3004/users/${selectedUser.id}`, data).then(
+        res => {
+          console.log('res update: ', res);
+          setName('');
+          setEmail('');
+          setBidang('');
+          getData();
+          setButton('Simpan');
+        },
+      );
+    }
+  };
+
+  // Get Data
+  const getData = () => {
+    Axios.get('http://192.168.2.86:3004/users/').then(res => {
+      console.log('res get data: ', res);
+      setUsers(res.data);
+    });
+  };
+
+  // Update Data
+  const selectItem = item => {
+    console.log('selected item: ', item);
+    setSelectedUser(item);
+    setName(item.name);
+    setEmail(item.email);
+    setBidang(item.bidang);
+    setButton('Update');
+  };
+
+  // Delete Data
+  const deleteItem = item => {
+    // console.log(item);
+    Axios.delete(`http://192.168.2.86:3004/users/${item.id}`).then(res => {
+      console.log('res delete: ', res);
+      getData();
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Local API (JSON Server)</Text>
       <Text>Masukan Anggota Kabayan Coding</Text>
-      <TextInput style={styles.input} placeholder="Nama Lengkap" />
-      <TextInput style={styles.input} placeholder="Email" />
-      <TextInput style={styles.input} placeholder="Bidang" />
-      <Button title="Simpan" />
+      <TextInput
+        style={styles.input}
+        placeholder="Nama Lengkap"
+        value={name}
+        onChangeText={value => setName(value)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        value={email}
+        onChangeText={value => setEmail(value)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Bidang"
+        value={bidang}
+        onChangeText={value => setBidang(value)}
+      />
+      <Button title={button} onPress={submit} />
       <View style={styles.line} />
-      <Item />
-      <Item />
-      <Item />
+      {users.map(user => {
+        return (
+          <Item
+            key={user.id}
+            name={user.name}
+            email={user.email}
+            bidang={user.bidang}
+            onPress={() => selectItem(user)}
+            onDelete={() =>
+              Alert.alert('Peringatan', 'Anda yakin akan menghapus user ini?', [
+                { text: 'Tidak', onPress: () => console.log('button tidak') },
+                { text: 'Ya', onPress: () => deleteItem(user) },
+              ])
+            }
+          />
+        );
+      })}
     </View>
   );
 }

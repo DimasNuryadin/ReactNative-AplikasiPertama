@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "server": "cd fakeAPI && json-server --watch db.json --port 3004"
+    "server-emulator": "cd fakeAPI && json-server --watch db.json --port 3004",
+    "server-device": "cd fakeAPI && json-server --host 192.168.2.86 db.json --port 3004"
   },
   "dependencies": {
     "axios": "^0.27.2",

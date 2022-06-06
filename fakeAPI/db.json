@@ -1,44 +1,22 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "Dimas",
+      "email": "dimas@gmail.com",
+      "bidang": "RN Dev"
     },
     {
-      "title": "Coba json server",
-      "author": "Dimas",
-      "id": 2
-    },
-    {
-      "title": "Call Api React Native",
-      "author": "Nuryadin",
-      "id": 3
-    },
-    {
-      "title": "Coba Euy",
-      "author": "Euy",
+      "name": "Lili",
+      "email": "lili@gmail.com",
+      "bidang": "sss",
       "id": 4
     },
     {
-      "title": "Coba Euyy",
-      "author": "Euyy",
+      "name": "jjh",
+      "email": "hhh",
+      "bidang": "hh",
       "id": 5
-    },
-    {
-      "title": "Cobas Euyy",
-      "author": "sEuyy",
-      "id": 6
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
